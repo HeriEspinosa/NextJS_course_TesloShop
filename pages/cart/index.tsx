@@ -12,7 +12,7 @@ const index: FC = () => {
 
             <Grid container>
                 <Grid item xs={12} sm={7}>
-                    <CartList /* editable */ />
+                    <CartList editable />
                 </Grid>
 
                 <Grid item xs={12} sm={5}>

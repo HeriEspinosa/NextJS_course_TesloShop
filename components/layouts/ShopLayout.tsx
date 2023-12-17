@@ -1,5 +1,5 @@
-import Head from 'next/head';
 import { FC, ReactNode } from 'react';
+import Head from 'next/head';
 import { Navbar, SideMenu } from '../ui';
 
 interface Props {
@@ -9,16 +9,11 @@ interface Props {
     imageFullUrl?: string;
 }
 
-export const ShopLayout: FC<Props> = ({
-    children,
-    title,
-    pageDescription,
-    imageFullUrl,
-}) => {
+export const ShopLayout: FC<Props> = ({ children, title, pageDescription, imageFullUrl }) => {
     return (
         <>
             <Head>
-                <title>{title}</title>
+                <title>{title} </title>
                 <meta name="description" content={pageDescription} />
 
                 <meta name="og:title" content={title} />
@@ -26,13 +21,10 @@ export const ShopLayout: FC<Props> = ({
 
                 {imageFullUrl && <meta name="og:image" content={imageFullUrl} />}
             </Head>
-
             <nav>
                 <Navbar />
             </nav>
-
             <SideMenu />
-
             <main
                 style={{
                     margin: '80px auto',

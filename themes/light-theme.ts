@@ -20,6 +20,7 @@ export const lightTheme = createTheme({
                 underline: 'none',
             },
         },
+
         MuiAppBar: {
             defaultProps: {
                 elevation: 0,
@@ -81,5 +82,18 @@ export const lightTheme = createTheme({
                 },
             },
         },
+
+        // MuiDataGrid: {
+        //     styleOverrides: {
+        //         root: {
+        //             '& .MuiDataGrid-cell:focus': {
+        //                 outline: 'none',
+        //             },
+        //             '& .MuiDataGrid-cell:focus-within': {
+        //                 outline: 'none',
+        //             },
+        //         },
+        //     },
+        // },
     },
 });

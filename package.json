@@ -13,12 +13,17 @@
     "@emotion/styled": "^11.11.0",
     "@mui/icons-material": "^5.14.15",
     "@mui/material": "^5.14.15",
+    "@mui/x-data-grid": "^6.17.0",
+    "js-cookie": "^3.0.5",
+    "mongoose": "^8.0.0",
     "next": "14.0.0",
     "react": "^18",
     "react-dom": "^18",
-    "react-slideshow-image": "^4.3.0"
+    "react-slideshow-image": "^4.3.0",
+    "swr": "^2.2.4"
   },
   "devDependencies": {
+    "@types/js-cookie": "^3.0.6",
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
