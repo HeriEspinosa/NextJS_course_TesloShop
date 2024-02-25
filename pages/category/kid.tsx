@@ -8,8 +8,6 @@ import { ScreenLoading } from '@/components/ui';
 const KidPage: NextPage = () => {
     const { products, isLoading } = useProducts('/products?gender=kid');
 
-    console.log(products);
-
     return (
         <>
             <ShopLayout

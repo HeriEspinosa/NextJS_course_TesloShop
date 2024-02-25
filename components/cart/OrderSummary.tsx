@@ -1,10 +1,23 @@
 import { CartContext } from '@/context';
 import { currency } from '@/utils';
 import { Grid, Typography } from '@mui/material';
-import { useContext } from 'react';
+import { FC, useContext } from 'react';
 
-export const OrderSummary = () => {
-    const { numbersOfItems, subTotal, tax, total } = useContext(CartContext);
+interface Props {
+    orderValues?: {
+        numbersOfItems: number;
+        subTotal: number;
+        tax: number;
+        total: number;
+    };
+}
+
+export const OrderSummary: FC<Props> = ({ orderValues }) => {
+    const cartValues = useContext(CartContext);
+
+    const { numbersOfItems, subTotal, tax, total } = orderValues
+        ? orderValues
+        : cartValues;
 
     return (
         <Grid container>
@@ -13,7 +26,7 @@ export const OrderSummary = () => {
             </Grid>
             <Grid item xs={6} display="flex" justifyContent="end">
                 <Typography>
-                    {numbersOfItems} {numbersOfItems > 1 ? 'items' : 'item'}
+                    {numbersOfItems} {numbersOfItems > 1 ? 'productos' : 'producto'}
                 </Typography>
             </Grid>
 
@@ -26,7 +39,7 @@ export const OrderSummary = () => {
 
             <Grid item xs={6}>
                 <Typography>
-                    Impuestos ({Number(process.env.NEXT_PUBLIC_TAX_RATE) * 100}%)
+                    ITBIS ({Number(process.env.NEXT_PUBLIC_TAX_RATE) * 100}%)
                 </Typography>
             </Grid>
             <Grid item xs={6} display="flex" justifyContent="end">

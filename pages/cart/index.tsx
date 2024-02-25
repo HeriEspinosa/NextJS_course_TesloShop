@@ -1,9 +1,25 @@
+import { FC, useContext, useEffect } from 'react';
+import { useRouter } from 'next/router';
+import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
+
+import { CartContext } from '@/context';
 import { CartList, OrderSummary } from '@/components/cart';
 import { ShopLayout } from '@/components/layouts';
-import { Box, Button, Card, CardContent, Divider, Grid, Typography } from '@mui/material';
-import { FC } from 'react';
 
-const index: FC = () => {
+const CartPage: FC = () => {
+    const { isLoaded, cart } = useContext(CartContext);
+    const router = useRouter();
+
+    useEffect(() => {
+        if (isLoaded && cart.length === 0) {
+            router.replace('/cart/empty');
+        }
+    }, [isLoaded, cart, router]);
+
+    if (!isLoaded || cart.length === 0) {
+        return <></>;
+    }
+
     return (
         <ShopLayout title="Carrito - 3" pageDescription="Carrito de compras de la tienda">
             <Typography variant="h1" component="h1" paddingBottom={2}>
@@ -28,6 +44,7 @@ const index: FC = () => {
                                     color="secondary"
                                     className="circular-btn"
                                     fullWidth
+                                    href="/checkout/address"
                                 >
                                     Checkout
                                 </Button>
@@ -40,4 +57,4 @@ const index: FC = () => {
     );
 };
 
-export default index;
+export default CartPage;
