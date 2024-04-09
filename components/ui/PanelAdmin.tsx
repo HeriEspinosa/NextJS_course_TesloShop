@@ -28,7 +28,7 @@ export const PanelAdmin: FC<Props> = ({ navigateTo }) => {
                 </ListItemIcon>
                 <ListItemText primary={'Dashboard'} />
             </ListItem>
-            <ListItem button>
+            <ListItem button onClick={() => navigateTo('/admin/orders')}>
                 <ListItemIcon>
                     <ConfirmationNumberOutlined />
                 </ListItemIcon>
@@ -40,6 +40,13 @@ export const PanelAdmin: FC<Props> = ({ navigateTo }) => {
                     <AdminPanelSettings />
                 </ListItemIcon>
                 <ListItemText primary={'Usuarios'} />
+            </ListItem>
+
+            <ListItem button onClick={() => navigateTo('/admin/products')}>
+                <ListItemIcon>
+                    <AdminPanelSettings />
+                </ListItemIcon>
+                <ListItemText primary={'Productos'} />
             </ListItem>
         </>
     );

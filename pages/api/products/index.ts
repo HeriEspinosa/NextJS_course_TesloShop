@@ -3,7 +3,9 @@ import { Product } from '@/models';
 import type { NextApiRequest, NextApiResponse } from 'next';
 import { IProduct } from '../../../interfaces/products';
 
-type Data = { status: string; message: string } | { status: string; products: IProduct[] };
+type Data =
+    | { status: string; message: string }
+    | { status: string; products: IProduct[] };
 
 export default function hander(req: NextApiRequest, res: NextApiResponse<Data>) {
     switch (req.method) {
@@ -35,8 +37,18 @@ const getProducts = async (req: NextApiRequest, res: NextApiResponse<Data>) => {
 
     await db.disconnect();
 
+    const updatedProducts = products.map((product) => {
+        product.images = product.images.map((image) => {
+            return image.includes('http')
+                ? image
+                : `${process.env.HOST_NAME}/products/${image}`;
+        });
+
+        return product;
+    });
+
     return res.status(200).json({
         status: 'success',
-        products,
+        products: updatedProducts,
     });
 };

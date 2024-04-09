@@ -48,13 +48,15 @@ const SummaryPage: FC = () => {
 
     const onCreateOrder = async () => {
         setIsPosting(true);
-        const { hasError, message } = await createOrder(); //TODO: depende del resultado debo de navegar o no
+        const { hasError, message } = await createOrder(); //depende del resultado debo de navegar o no
 
         if (hasError) {
             setIsPosting(false);
             setErrorMessage(message);
             return;
         }
+
+        console.log(message);
 
         router.replace(`/orders/${message}`);
     };

@@ -2,12 +2,7 @@ import { useEffect, useState } from 'react';
 import useSWR from 'swr';
 import { Grid, MenuItem, Select } from '@mui/material';
 import { PeopleOutline } from '@mui/icons-material';
-import {
-    DataGrid,
-    GridColDef,
-    GridRowsProp,
-    GridRenderCellParams,
-} from '@mui/x-data-grid';
+import { DataGrid, GridColDef, GridRenderCellParams } from '@mui/x-data-grid';
 
 import { AdminLayout } from '../../components/layouts';
 import { IUser } from '@/interfaces';
@@ -27,11 +22,11 @@ const UsersPage = () => {
         }
     }, [data?.users]);
 
-    if (!data && !error) return <></>;
+    if (!data?.users && !error) return <></>;
 
     const columns: GridColDef[] = [
         { field: 'email', headerName: 'Correo', width: 250 },
-        { field: 'name', headerName: 'Nombre completo', width: 300 },
+        { field: 'name', headerName: 'Nombre completo', width: 250 },
         {
             field: 'role',
             headerName: 'Rol',

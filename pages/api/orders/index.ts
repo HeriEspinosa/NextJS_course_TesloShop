@@ -6,12 +6,7 @@ import { IOrder } from '@/interfaces';
 import { Order, Product } from '@/models';
 import { roundOutDecimals } from '@/utils';
 
-type Data =
-    | {
-          status: string;
-          message: string;
-      }
-    | { status: string; result: IOrder };
+type Data = { status: string; message: string } | { status: string; result: IOrder };
 
 export default function handler(req: NextApiRequest, res: NextApiResponse<Data>) {
     switch (req.method) {

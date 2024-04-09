@@ -3,7 +3,7 @@ import { IProduct } from '@/interfaces';
 
 const productSchema = new Schema(
     {
-        description: { type: String, require: true },
+        description: { type: String, require: true, default: '' },
         images: [{ type: String }],
         inStock: { type: Number, require: true, default: 0 },
         price: { type: Number, require: true, default: 0 },
@@ -17,14 +17,15 @@ const productSchema = new Schema(
             },
         ],
         slug: { type: String, required: true, unique: true },
-        tags: [{ type: String }],
-        title: { type: String, require: true },
+        tags: [{ type: String, default: '' }],
+        title: { type: String, require: true, default: '' },
         type: {
             type: String,
             enum: {
                 values: ['shirts', 'pants', 'hoodies', 'hats'],
                 message: '{VALUE} no es un tipo valido',
             },
+            default: 'shirts',
         },
         gender: {
             type: String,
@@ -32,6 +33,7 @@ const productSchema = new Schema(
                 values: ['men', 'women', 'kid', 'unisex'],
                 message: '{VALUE} no es un genero valido',
             },
+            default: 'unisex',
         },
     },
     {
@@ -41,6 +43,7 @@ const productSchema = new Schema(
 
 productSchema.index({ title: 'text', tag: 'text' });
 
-const Product: Model<IProduct> = mongoose.models.Product || model('Product', productSchema);
+const Product: Model<IProduct> =
+    mongoose.models.Product || model('Product', productSchema);
 
 export default Product;

@@ -60,7 +60,10 @@ export const authOptions: AuthOptions = {
 
                 switch (account.type) {
                     case 'oauth': // cuando se inicia sesion con una red externa
-                        token.user = await dbUsers.oAuthToDbUser(user?.email, user?.name);
+                        token.user = await dbUsers.oAuthToDbUser(
+                            user?.email || '',
+                            user?.name || ''
+                        );
                         break;
 
                     case 'credentials':
