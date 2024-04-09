@@ -34,7 +34,7 @@ export const Navbar = () => {
                 <NextLink href="/" passHref>
                     <Box display="flex" alignItems="center">
                         <Typography variant="h6">Teslo |</Typography>
-                        <Typography sx={{ ml: 0.5 }}>Shop</Typography>
+                        <Typography sx={{ ml: 0.5 }}>Shop!</Typography>
                     </Box>
                 </NextLink>
 
